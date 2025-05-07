@@ -58,3 +58,12 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const getVehicleCount = async (req, res) => {
+  try {
+    const count = await Vehicle.countDocuments();
+    res.json({ count });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch vehicle count', error: error.message });
+  }
+};

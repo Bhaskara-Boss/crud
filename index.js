@@ -5,7 +5,9 @@ import bodyParserfrom from 'body-parser';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute.js';
-
+import trafficSignalRoute from './routes/trafficSignalRoute.js';
+import vehicleRoute from './routes/vehicleRoute.js';
+import cors from 'cors';
 const app = express();
 
 app.use(bodyParser.json());
@@ -23,3 +25,5 @@ mongoose.connect(mongo_url)
     });
 
     app.use('/api/user', userRoute);
+    app.use('/api/traffic-signals', trafficSignalRoute); // ✅ This is what your frontend fetch() is calling
+    app.use('/api/vehicles', vehicleRoute); // ✅ This is what your frontend fetch() is calling
